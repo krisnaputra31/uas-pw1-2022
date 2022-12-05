@@ -21,29 +21,38 @@
     <title>lorem Shop</title>
 </head>
 
-<body>
+<body id="home">
     <!-- Navbar here -->
-    <nav class="navbar navbar-expand-lg bg-primary">
+    <nav class="navbar navbar-expand-lg bg-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#home">
                 <img src="https://source.unsplash.com/random/?logo" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
-                Brand
+                Lorem
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav w-100">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#testimonial">Testimonial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item ms-lg-auto">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Sign in
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -88,7 +97,7 @@
     <!-- card here -->
     <main class="container-fluid">
         <!-- Card here -->
-        <section class="container" id="card">
+        <section class="container" id="pricing">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -106,7 +115,7 @@
         </section>
         <!-- End of Card here -->
 
-        <section class="container" id="testimoni">
+        <section class="container" id="testimonial">
             <div class="row">
                 <div class="col-12 text-center">
                     <h1>Testimoni</h1>
@@ -131,10 +140,35 @@
     </main>
     <!-- End of card here -->
 
+    <!-- contact start here -->
+    <section id="contact" class="container">
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center w-100">
+                <form class="w-75">
+                    <div class="mb-3">
+                        <h1>Contact Us</h1>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of contact here -->
+
+    <!-- footer start here -->
     <section id="footer" class="container">
         <footer class="py-5">
-            <div class="row">
-                <div class="col-6 col-md-2 mb-3">
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-5 mb-3">
                     <h5>Section</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -145,7 +179,7 @@
                     </ul>
                 </div>
 
-                <div class="col-6 col-md-2 mb-3">
+                <div class="col-6 col-md-5 mb-3">
                     <h5>Section</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -185,6 +219,7 @@
             </div>
         </footer>
     </section>
+    <!-- end of footer -->
 
     <section id="will-be-use" class="container text-center">
         <h1>Will Be Use</h1>
