@@ -1,0 +1,33 @@
+body,
+nav {
+  background: #fff9f0;
+  color: #161212;
+}
+
+.card {
+  transition: all 0.5s ease-in-out;
+}
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+a {
+  text-decoration: none;
+  color: #161212;
+}
+
+@media (min-width: 1200px) {
+  #my-carousel img {
+    height: 80vh;
+  }
+}
+
+.bi::before {
+  display: inline-block;
+  content: "";
+  vertical-align: -0.125em;
+  background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+}
