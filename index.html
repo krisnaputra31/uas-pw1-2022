@@ -209,16 +209,29 @@
       <div class="col-12 col-md-10 d-flex justify-content-center">
         <form class="w-75" name="submit-to-google-sheet">
           <div class="mb-3" data-aos="zoom-out-up">
+            <div id="contactUsSuccess" class="alert alert-success d-none" role="alert">
+              Message Send Success!!!
+            </div>
+            <div id="contactUsFail" class="alert alert-danger d-none" role="alert">
+              Message Send Failed!!!
+            </div>
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-              aria-describedby="emailHelp" />
+            <input name="email" id="contactUsEmail" type="email" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" value="" required />
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3" data-aos="zoom-out-up">
             <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-            <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="message" id="contactUsMessage" class="form-control" id="exampleFormControlTextarea1"
+              rows="2" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" data-aos="zoom-out-up">Submit</button>
+          <div class="row">
+            <div class="col d-flex align-items-center">
+              <button id="contactUsButtonSubmit" type="submit" value="Submit" class="btn btn-primary me-3"
+                data-aos="zoom-out-up">Submit</button>
+              <div id="contactUsSpinner" class="spinner-grow text-primary d-none" role="status"></div>
+            </div>
+          </div>
         </form>
       </div>
     </div>

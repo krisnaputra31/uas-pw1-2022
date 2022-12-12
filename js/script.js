@@ -31,15 +31,39 @@ window.addEventListener("scroll", (_) => {
 });
 
 
+// contact us login
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw7cxNJHhqbCSDh5Us5pfR7O5iKf6u5aTjivCTZPisLcejARpUM69veuB4bK6g-CK0o/exec'
 const form = document.forms['submit-to-google-sheet']
-
+const contactUsEmail = document.querySelector('#contactUsEmail')
+const contactUsMessage = document.querySelector('#contactUsMessage')
+const contactUsButtonSubmit = document.querySelector('#contactUsButtonSubmit')
+const contactUsSpinner = document.querySelector('#contactUsSpinner')
+const contactUsSuccess = document.querySelector('#contactUsSuccess')
+const contactUsFail = document.querySelector('#contactUsFail')
+console.log(contactUsEmail)
 form.addEventListener('submit', e => {
   e.preventDefault()
+  contactUsButtonSubmit.textContent = "Loading..."
+  contactUsButtonSubmit.setAttribute('disabled', "disabled")
+  contactUsSpinner.classList.remove('d-none')
   fetch(scriptURL, {
       method: 'POST',
       body: new FormData(form)
     })
-    .then(response => console.log('Success!', response))
-    .catch(error => console.error('Error!', error.message))
+    .then(response => {
+      contactUsButtonSubmit.textContent = "Submit"
+      contactUsButtonSubmit.removeAttribute('disabled')
+      contactUsSpinner.classList.add('d-none')
+      contactUsSuccess.classList.remove('d-none')
+      contactUsEmail.value = ""
+      contactUsMessage.value = ""
+    })
+    .catch(error => {
+      contactUsButtonSubmit.textContent = "Submit"
+      contactUsButtonSubmit.removeAttribute('disabled')
+      contactUsSpinner.classList.add('d-none')
+      contactUsEmail.value = ""
+      contactUsMessage.value = ""
+      contactUsFail.classList.remove('d-none')
+    })
 })
