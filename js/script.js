@@ -23,3 +23,9 @@ if (window.innerWidth < 992) {
   const collapsable = document.getElementById("navbarNav");
   navLinks.forEach((navLink) => navLink.addEventListener("click", (_) => collapsable.classList.remove("show")));
 }
+
+const fab = document.querySelector(".fab");
+window.addEventListener("scroll", (_) => {
+  if (document.documentElement.scrollTop >= 500) fab.classList.remove("d-none");
+  else fab.classList.add("d-none");
+});

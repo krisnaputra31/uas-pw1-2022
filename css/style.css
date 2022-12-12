@@ -1,7 +1,9 @@
 body,
+html,
 nav {
   background: #fff9f0;
   color: #161212;
+  overflow-x: hidden;
 }
 
 /* width */
@@ -52,4 +54,24 @@ a {
   background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
+}
+
+/* fab icon */
+body {
+  position: relative;
+}
+
+.fab img {
+  aspect-ratio: 1/1;
+  width: 40px;
+  position: fixed;
+  margin: 20px;
+  cursor: pointer;
+  bottom: 0;
+  right: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.fab:hover img {
+  transform: scale(1.08);
 }
