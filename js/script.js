@@ -29,3 +29,17 @@ window.addEventListener("scroll", (_) => {
   if (document.documentElement.scrollTop >= 500) fab.classList.remove("d-none");
   else fab.classList.add("d-none");
 });
+
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbw7cxNJHhqbCSDh5Us5pfR7O5iKf6u5aTjivCTZPisLcejARpUM69veuB4bK6g-CK0o/exec'
+const form = document.forms['submit-to-google-sheet']
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(response => console.log('Success!', response))
+    .catch(error => console.error('Error!', error.message))
+})
