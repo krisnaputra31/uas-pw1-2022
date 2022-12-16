@@ -95,7 +95,7 @@ function doLogin() {
 
   if (email !== emailUser || pass !== passUser) {
     loginAlert.classList.remove('d-none')
-    loginAlert.textContent = "Email or Pass Wrong!"
+    loginAlert.textContent = "Email or Pass is Incorrect!"
     return false;
   }
 
