@@ -28,11 +28,11 @@ nav {
   background: #555;
 }
 
-.card {
+.mycard {
   transition: all 0.5s ease-in-out;
 }
 
-.card:hover {
+.mycard:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
