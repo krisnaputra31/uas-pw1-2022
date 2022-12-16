@@ -66,3 +66,94 @@ form.addEventListener('submit', e => {
       contactUsFail.classList.remove('d-none')
     })
 })
+
+// Login logic
+const EMAILUSER = "EMAILUSER"
+const PASSUSER = "PASSUSER"
+
+function doLogin() {
+  // take the input
+  const loginEmail = document.querySelector('#loginEmail')
+  const loginPass = document.querySelector('#loginPass')
+  const loginAlert = document.querySelector('#loginAlert')
+  const signinbutton = document.querySelector('#signinbutton')
+  const logoutbutton = document.querySelector('#logoutbutton')
+  // take the input text
+  const email = loginEmail.value
+  const pass = loginPass.value
+  let success = false
+
+  // check in localstorage is it exist
+  const emailUser = localStorage.getItem(EMAILUSER)
+  const passUser = localStorage.getItem(PASSUSER)
+
+  if (emailUser === null) {
+    loginAlert.classList.remove('d-none')
+    loginAlert.textContent = "Email Not Found!"
+    return false;
+  }
+
+  if (email !== emailUser && pass !== passUser) {
+    loginAlert.classList.remove('d-none')
+    loginAlert.textContent = "Email or Pass Wrong!"
+    return false;
+  }
+
+  if (email === emailUser && pass === passUser) {
+    success = true
+  }
+
+  if (success) {
+    loginEmail.value = ""
+    loginPass.value = ""
+    signinbutton.classList.add('d-none')
+    logoutbutton.classList.remove('d-none')
+    const myModalEl = document.getElementById('loginModal');
+    const modal = bootstrap.Modal.getInstance(myModalEl)
+    modal.hide();
+    loginAlert.classList.add('d-none')
+  }
+  return false;
+}
+
+// Daftar Logic
+function doDaftar() {
+  // take the input
+  const daftarEmail = document.querySelector('#daftarEmail')
+  const daftarPass = document.querySelector('#daftarPass')
+  const daftarAlert = document.querySelector('#daftarAlert')
+  const signinbutton = document.querySelector('#signinbutton')
+  const logoutbutton = document.querySelector('#logoutbutton')
+  // take the input text
+  const email = daftarEmail.value
+  const pass = daftarPass.value
+
+  //! cant use this cause just have one user at a time.
+  // if (localStorage.getItem(EMAILUSER) === email) {
+  //   daftarAlert.classList.remove('d-none')
+  //   daftarAlert.textContent = "Email Already Exist"
+  //   return false;
+  // }
+
+  // set to localstorage
+  localStorage.setItem(EMAILUSER, email)
+  localStorage.setItem(PASSUSER, pass)
+
+  if (localStorage.getItem(EMAILUSER)) {
+    daftarEmail.value = ""
+    daftarPass.value = ""
+    signinbutton.classList.add('d-none')
+    logoutbutton.classList.remove('d-none')
+    const myModalEl = document.getElementById('daftarModal');
+    const modal = bootstrap.Modal.getInstance(myModalEl)
+    modal.hide();
+    loginAlert.classList.add('d-none')
+  }
+  return false;
+}
+
+// log out button
+document.querySelector("#logoutbutton").addEventListener('click', () => {
+  document.querySelector('#signinbutton').classList.remove('d-none')
+  document.querySelector('#logoutbutton').classList.add('d-none')
+})
