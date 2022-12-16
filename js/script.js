@@ -40,7 +40,6 @@ const contactUsButtonSubmit = document.querySelector('#contactUsButtonSubmit')
 const contactUsSpinner = document.querySelector('#contactUsSpinner')
 const contactUsSuccess = document.querySelector('#contactUsSuccess')
 const contactUsFail = document.querySelector('#contactUsFail')
-console.log(contactUsEmail)
 form.addEventListener('submit', e => {
   e.preventDefault()
   contactUsButtonSubmit.textContent = "Loading..."

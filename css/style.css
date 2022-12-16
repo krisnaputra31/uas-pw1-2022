@@ -31,6 +31,7 @@ nav {
 .card {
   transition: all 0.5s ease-in-out;
 }
+
 .card:hover {
   cursor: pointer;
   transform: scale(1.05);
@@ -74,4 +75,13 @@ body {
 
 .fab:hover img {
   transform: scale(1.08);
+}
+
+/* card on hover change to gif */
+#uiuxcard div img {
+  background-image: url(img/coba.png);
+}
+
+#uiuxcard:hover div img {
+  background-image: url(img/coba.png);
 }
