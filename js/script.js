@@ -30,88 +30,102 @@ window.addEventListener("scroll", (_) => {
   else fab.classList.add("d-none");
 });
 
-
 // contact us login
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw7cxNJHhqbCSDh5Us5pfR7O5iKf6u5aTjivCTZPisLcejARpUM69veuB4bK6g-CK0o/exec'
-const form = document.forms['submit-to-google-sheet']
-const contactUsEmail = document.querySelector('#contactUsEmail')
-const contactUsMessage = document.querySelector('#contactUsMessage')
-const contactUsButtonSubmit = document.querySelector('#contactUsButtonSubmit')
-const contactUsSpinner = document.querySelector('#contactUsSpinner')
-const contactUsSuccess = document.querySelector('#contactUsSuccess')
-const contactUsFail = document.querySelector('#contactUsFail')
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  contactUsButtonSubmit.textContent = "Loading..."
-  contactUsButtonSubmit.setAttribute('disabled', "disabled")
-  contactUsSpinner.classList.remove('d-none')
+const scriptURL = "https://script.google.com/macros/s/AKfycbw7cxNJHhqbCSDh5Us5pfR7O5iKf6u5aTjivCTZPisLcejARpUM69veuB4bK6g-CK0o/exec";
+const form = document.forms["submit-to-google-sheet"];
+const contactUsEmail = document.querySelector("#contactUsEmail");
+const contactUsMessage = document.querySelector("#contactUsMessage");
+const contactUsButtonSubmit = document.querySelector("#contactUsButtonSubmit");
+const contactUsSpinner = document.querySelector("#contactUsSpinner");
+const contactUsSuccess = document.querySelector("#contactUsSuccess");
+const contactUsFail = document.querySelector("#contactUsFail");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  contactUsButtonSubmit.textContent = "Loading...";
+  contactUsButtonSubmit.setAttribute("disabled", "disabled");
+  contactUsSpinner.classList.remove("d-none");
   fetch(scriptURL, {
-      method: 'POST',
-      body: new FormData(form)
+    method: "POST",
+    body: new FormData(form),
+  })
+    .then((response) => {
+      contactUsButtonSubmit.textContent = "Submit";
+      contactUsButtonSubmit.removeAttribute("disabled");
+      contactUsSpinner.classList.add("d-none");
+      contactUsSuccess.classList.remove("d-none");
+      contactUsEmail.value = "";
+      contactUsMessage.value = "";
     })
-    .then(response => {
-      contactUsButtonSubmit.textContent = "Submit"
-      contactUsButtonSubmit.removeAttribute('disabled')
-      contactUsSpinner.classList.add('d-none')
-      contactUsSuccess.classList.remove('d-none')
-      contactUsEmail.value = ""
-      contactUsMessage.value = ""
-    })
-    .catch(error => {
-      contactUsButtonSubmit.textContent = "Submit"
-      contactUsButtonSubmit.removeAttribute('disabled')
-      contactUsSpinner.classList.add('d-none')
-      contactUsEmail.value = ""
-      contactUsMessage.value = ""
-      contactUsFail.classList.remove('d-none')
-    })
-})
+    .catch((error) => {
+      contactUsButtonSubmit.textContent = "Submit";
+      contactUsButtonSubmit.removeAttribute("disabled");
+      contactUsSpinner.classList.add("d-none");
+      contactUsEmail.value = "";
+      contactUsMessage.value = "";
+      contactUsFail.classList.remove("d-none");
+    });
+});
 
 // Login logic
-const EMAILUSER = "EMAILUSER"
-const PASSUSER = "PASSUSER"
+const EMAILUSER = "EMAILUSER";
+const PASSUSER = "PASSUSER";
+const REMEMBERME = "REMEMBERME";
+
+// like init method
+// void init() {
+checkLoggedInForAutoEmail();
+autoLoggedIn();
+// }
 
 function doLogin() {
   // take the input
-  const loginEmail = document.querySelector('#loginEmail')
-  const loginPass = document.querySelector('#loginPass')
-  const loginAlert = document.querySelector('#loginAlert')
-  const signinbutton = document.querySelector('#signinbutton')
-  const logoutbutton = document.querySelector('#logoutbutton')
+  const loginEmail = document.querySelector("#loginEmail");
+  const loginPass = document.querySelector("#loginPass");
+  const daftarEmail = document.querySelector("#daftarEmail");
+  const rememberLogin = document.querySelector("#rememberLogin").checked;
+  const daftarPass = document.querySelector("#daftarPass");
+  const loginAlert = document.querySelector("#loginAlert");
+  const signinbutton = document.querySelector("#signinbutton");
+  const logoutbutton = document.querySelector("#logoutbutton");
   // take the input text
-  const email = loginEmail.value
-  const pass = loginPass.value
-  let success = false
+  const email = loginEmail.value;
+  const pass = loginPass.value;
+  let success = false;
 
   // check in localstorage is it exist
-  const emailUser = localStorage.getItem(EMAILUSER)
-  const passUser = localStorage.getItem(PASSUSER)
+  const emailUser = localStorage.getItem(EMAILUSER);
+  const passUser = localStorage.getItem(PASSUSER);
 
   if (emailUser === null) {
-    loginAlert.classList.remove('d-none')
-    loginAlert.textContent = "Email Not Found!"
+    loginAlert.classList.remove("d-none");
+    loginAlert.textContent = "Email Not Found!";
     return false;
   }
 
   if (email !== emailUser || pass !== passUser) {
-    loginAlert.classList.remove('d-none')
-    loginAlert.textContent = "Email or Pass is Incorrect!"
+    loginAlert.classList.remove("d-none");
+    loginAlert.textContent = "Email or Pass is Incorrect!";
     return false;
   }
 
   if (email === emailUser && pass === passUser) {
-    success = true
+    success = true;
   }
 
   if (success) {
-    loginEmail.value = ""
-    loginPass.value = ""
-    signinbutton.classList.add('d-none')
-    logoutbutton.classList.remove('d-none')
-    const myModalEl = document.getElementById('loginModal');
-    const modal = bootstrap.Modal.getInstance(myModalEl)
+    if (rememberLogin) localStorage.setItem(REMEMBERME, "true");
+    else localStorage.setItem(REMEMBERME, "false");
+    loginEmail.value = "";
+    loginPass.value = "";
+    daftarEmail.value = "";
+    daftarPass.value = "";
+    signinbutton.classList.add("d-none");
+    logoutbutton.classList.remove("d-none");
+    const myModalEl = document.getElementById("loginModal");
+    const modal = bootstrap.Modal.getInstance(myModalEl);
     modal.hide();
-    loginAlert.classList.add('d-none')
+    loginAlert.classList.add("d-none");
+    checkLoggedInForAutoEmail();
   }
   return false;
 }
@@ -119,14 +133,16 @@ function doLogin() {
 // Daftar Logic
 function doDaftar() {
   // take the input
-  const daftarEmail = document.querySelector('#daftarEmail')
-  const daftarPass = document.querySelector('#daftarPass')
-  const daftarAlert = document.querySelector('#daftarAlert')
-  const signinbutton = document.querySelector('#signinbutton')
-  const logoutbutton = document.querySelector('#logoutbutton')
+  const daftarEmail = document.querySelector("#daftarEmail");
+  const daftarPass = document.querySelector("#daftarPass");
+  const remeberDaftar = document.querySelector("#rememberDaftar").checked;
+  const loginEmail = document.querySelector("#loginEmail");
+  const loginPass = document.querySelector("#loginPass");
+  const signinbutton = document.querySelector("#signinbutton");
+  const logoutbutton = document.querySelector("#logoutbutton");
   // take the input text
-  const email = daftarEmail.value
-  const pass = daftarPass.value
+  const email = daftarEmail.value;
+  const pass = daftarPass.value;
 
   //! cant use this cause just have one user at a time.
   // if (localStorage.getItem(EMAILUSER) === email) {
@@ -136,24 +152,54 @@ function doDaftar() {
   // }
 
   // set to localstorage
-  localStorage.setItem(EMAILUSER, email)
-  localStorage.setItem(PASSUSER, pass)
+  localStorage.setItem(EMAILUSER, email);
+  localStorage.setItem(PASSUSER, pass);
+  if (remeberDaftar) localStorage.setItem(REMEMBERME, "true");
+  else localStorage.setItem(REMEMBERME, "false");
 
   if (localStorage.getItem(EMAILUSER)) {
-    daftarEmail.value = ""
-    daftarPass.value = ""
-    signinbutton.classList.add('d-none')
-    logoutbutton.classList.remove('d-none')
-    const myModalEl = document.getElementById('daftarModal');
-    const modal = bootstrap.Modal.getInstance(myModalEl)
+    daftarEmail.value = "";
+    daftarPass.value = "";
+    loginEmail.value = "";
+    loginPass.value = "";
+    signinbutton.classList.add("d-none");
+    logoutbutton.classList.remove("d-none");
+    const myModalEl = document.getElementById("daftarModal");
+    const modal = bootstrap.Modal.getInstance(myModalEl);
     modal.hide();
-    loginAlert.classList.add('d-none')
+    loginAlert.classList.add("d-none");
+    checkLoggedInForAutoEmail();
   }
   return false;
 }
 
 // log out button
-document.querySelector("#logoutbutton").addEventListener('click', () => {
-  document.querySelector('#signinbutton').classList.remove('d-none')
-  document.querySelector('#logoutbutton').classList.add('d-none')
-})
+document.querySelector("#logoutbutton").addEventListener("click", () => {
+  document.querySelector("#signinbutton").classList.remove("d-none");
+  document.querySelector("#logoutbutton").classList.add("d-none");
+  localStorage.setItem(REMEMBERME, "false");
+  checkLoggedInForAutoEmail();
+});
+
+// chekc if remember me is on or off function
+function autoLoggedIn() {
+  if (localStorage.getItem(REMEMBERME) === "true") {
+    signinbutton.classList.add("d-none");
+    logoutbutton.classList.remove("d-none");
+    checkLoggedInForAutoEmail();
+  }
+}
+
+// check for the email if logged in so value of message email is Already fill and readonly is true
+function checkLoggedInForAutoEmail() {
+  const emailUser = localStorage.getItem(EMAILUSER);
+  if (emailUser && document.querySelector("#signinbutton").classList.contains("d-none")) {
+    const messageEmail = document.querySelector("#contactUsEmail");
+    messageEmail.value = emailUser;
+    messageEmail.setAttribute("readonly", "true");
+  } else {
+    const messageEmail = document.querySelector("#contactUsEmail");
+    messageEmail.value = "";
+    messageEmail.removeAttribute("readonly");
+  }
+}
