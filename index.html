@@ -1,443 +1,396 @@
 <!DOCTYPE html>
 <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon link -->
+    <link rel="shortcut icon" href="img/Logo-circle.png" type="image/x-icon" />
+    <!-- bootstrap css and js -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+    <!-- data aos css and js -->
+    <link href="css/aos.css" rel="stylesheet" />
+    <script src="js/aos.js" defer></script>
+    <!-- my css -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <!-- my js -->
+    <script src="js/script.js" type="text/javascript" charset="utf-8" defer></script>
+    <title>Waterio Course</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- favicon link -->
-  <link rel="shortcut icon" href="img/Logo.gif" type="image/x-icon" />
-  <!-- bootstrap css and js -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-  <script src="js/bootstrap.bundle.min.js" defer></script>
-  <!-- data aos css and js -->
-  <link href="css/aos.css" rel="stylesheet" />
-  <script src="js/aos.js" defer></script>
-  <!-- my css -->
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-  <!-- my js -->
-  <script src="js/script.js" type="text/javascript" charset="utf-8" defer></script>
-  <title>Waterio Course</title>
-</head>
+  <body id="home">
+    <!-- Navbar here -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" data-aos="fade-down">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#home">
+          <img src="img/Logo.png" alt="Logo" width="30" height="30" onmouseover="this.src='img/Logo.gif'" onmouseout="this.src='img/Logo.png'" class="d-inline-block align-text-top rounded-circle me-1 me-md-2" />
+          Waterio Courses
+        </a>
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100">
+            <li class="nav-item ms-lg-auto">
+              <a class="nav-link text-black" href="#courses">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="#testimonial">Testimonial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="#contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <button id="signinbutton" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</button>
+              <button id="logoutbutton" type="button" class="btn btn-danger d-none">Log Out</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1">
+            <form class="w-50" onsubmit="return doLogin()">
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" required />
+              </div>
+              <div class="mb-3">
+                <label for="loginPass" class="form-label">Password</label>
+                <input type="password" class="form-control" id="loginPass" required />
+              </div>
+              <div id="loginAlert" class="alert alert-danger d-none" role="alert">Error</div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <p class="mt-3">Belum Punya Akun? <a href="#daftarModal" class="text-primary" data-bs-toggle="modal">Daftar</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of login modal -->
 
-<body id="home">
-  <!-- Navbar here -->
-  <nav class="navbar navbar-expand-lg fixed-top shadow-sm" data-aos="fade-down">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#home">
-        <img src="img/Logo.png" alt="Logo" width="30" height="30"
-        onmouseover="this.src='img/Logo.gif'"
-        onmouseout="this.src='img/Logo.png'"
-          class="d-inline-block align-text-top rounded-circle me-1 me-md-2" />
-        Waterio Courses
-      </a>
-      <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <!-- Daftar Modal -->
+    <div class="modal fade" id="daftarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginModalLabel">Daftar</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1">
+            <form class="w-50" onsubmit="return doDaftar()">
+              <div class="mb-3">
+                <label for="daftarEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="daftarEmail" aria-describedby="loginEmailHelp" required />
+                <div id="loginEmailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="daftarPass" class="form-label">Password</label>
+                <input type="password" class="form-control" id="daftarPass" required />
+              </div>
+              <div id="daftarAlert" class="alert alert-danger d-none" role="alert">Error</div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <p class="mt-3">Sudah Punya Akun? <a href="#loginModal" class="text-primary" data-bs-toggle="modal">Login</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of daftar modal -->
+
+    <!-- End of Navbar here -->
+
+    <!-- carosel here -->
+    <div id="carouselExampleCaptions" class="carousel slide mt-5" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner" id="my-carousel" data-aos="zoom-in">
+        <div class="carousel-item active">
+          <img src="img/slide1.gif" class="d-block w-100" alt="highly-amusing way to level up your programming skills" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/slide2.gif" class="d-block w-100" alt="project-based learning" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/slide3.gif" class="d-block w-100" alt="learn code faster" />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100">
-          <li class="nav-item ms-lg-auto">
-            <a class="nav-link text-black" href="#courses">Courses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-black" href="#testimonial">Testimonial</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-black" href="#contact">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <button id="signinbutton" type="button" class="btn btn-success" data-bs-toggle="modal"
-              data-bs-target="#loginModal">Sign
-              in</button>
-            <button id="logoutbutton" type="button" class="btn btn-danger d-none">Log Out</button>
-          </li>
-        </ul>
-      </div>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  </nav>
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1">
-          <form class="w-50" onsubmit="return doLogin()">
-            <div class="mb-3">
-              <label for="loginEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="loginEmail" required />
-            </div>
-            <div class="mb-3">
-              <label for="loginPass" class="form-label">Password</label>
-              <input type="password" class="form-control" id="loginPass" required />
-            </div>
-            <div id="loginAlert" class="alert alert-danger d-none" role="alert">Error</div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <p class="mt-3">Belum Punya Akun? <a href="#daftarModal" class="text-primary"
-                data-bs-toggle="modal">Daftar</a></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of login modal -->
-
-  <!-- Daftar Modal -->
-  <div class="modal fade" id="daftarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="loginModalLabel">Daftar</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1">
-          <form class="w-50" onsubmit="return doDaftar()">
-            <div class="mb-3">
-              <label for="daftarEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="daftarEmail" aria-describedby="loginEmailHelp" required />
-              <div id="loginEmailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-              <label for="daftarPass" class="form-label">Password</label>
-              <input type="password" class="form-control" id="daftarPass" required />
-            </div>
-            <div id="daftarAlert" class="alert alert-danger d-none" role="alert">Error</div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <p class="mt-3">Sudah Punya Akun? <a href="#loginModal" class="text-primary"
-                data-bs-toggle="modal">Login</a></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of daftar modal -->
-
-  <!-- End of Navbar here -->
-
-  <!-- carosel here -->
-  <div id="carouselExampleCaptions" class="carousel slide mt-5" data-bs-ride="false">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner" id="my-carousel" data-aos="zoom-in">
-      <div class="carousel-item active">
-        <img src="img/slide1.gif" class="d-block w-100" alt="highly-amusing way to level up your programming skills" />
-      </div>
-      <div class="carousel-item">
-        <img src="img/slide2.gif" class="d-block w-100" alt="project-based learning" />
-      </div>
-      <div class="carousel-item">
-        <img src="img/slide3.gif" class="d-block w-100" alt="learn code faster" />
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <!-- End of carosel here -->
-  <!-- card here -->
-  <main class="container-fluid">
-    <!-- Card here -->
-    <section class="container pt-3" id="courses">
-      <div class="row pt-5" data-aos="flip-up">
-        <div class="col-12 text-center">
-          <h1>Courses</h1>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-8 col-md-4 my-3" data-aos="fade-right">
-          <a href="#uiuxmodal" data-bs-toggle="modal">
-            <div class="card mycard">
-              <img src="img/myuiuxcard.png" class="card-img-top" alt="UI or UX course"
-                onmouseover="this.src='img/myuiuxcard.gif'" onmouseout="this.src='img/myuiuxcard.png'" loading="lazy" />
-              <div class="card-body">
-                <h5 class="card-title">UI / UX Design</h5>
-                <p class="card-text">Belajar Desain Interface dan Pengalaman User</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- UI UX card Modal -->
-        <div class="modal fade" id="uiuxmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginModalLabel">UI UX Design</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-5">
-                <div class="card">
-                  <img src="img/myuiuxcard.gif" height="550" class="card-img-top" alt="UI or UX course"
-                    loading="lazy" />
-                  <div class="card-body">
-                    <h5 class="card-title">UI / UX Design</h5>
-                    <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Desain Interface, Desain Mockup,
-                      hingga kepada Pengalaman User.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <!-- End of carosel here -->
+    <!-- card here -->
+    <main class="container-fluid">
+      <!-- Card here -->
+      <section class="container pt-3" id="courses">
+        <div class="row pt-5" data-aos="flip-up">
+          <div class="col-12 text-center">
+            <h1>Courses</h1>
           </div>
         </div>
-        <!-- End of UI UX card modal -->
-        <div class="col-8 col-md-4 my-3" data-aos="fade-up">
-          <a href="#frontendmodal" data-bs-toggle="modal">
-            <div class="card mycard">
-              <img src="img/myfrontendcard.png" class="card-img-top" alt="UI or UX course"
-                onmouseover="this.src='img/myfrontendcard.gif'" onmouseout="this.src='img/myfrontendcard.png'"
-                loading="lazy" />
-              <div class="card-body">
-                <h5 class="card-title">Frontend</h5>
-                <p class="card-text">Belajar Implementasi Desain Interface</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- Frontend card Modal -->
-        <div class="modal fade" id="frontendmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginModalLabel">Frontend</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-5">
-                <div class="card">
-                  <img src="img/myfrontendcard.gif" height="550" class="card-img-top" alt="UI or UX course"
-                    loading="lazy" />
-                  <div class="card-body">
-                    <h5 class="card-title">Frontend</h5>
-                    <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Implementasi Desain Interface ke
-                      dalam kode HTML yang dibantu dengan banyak library css lainnya hingga Hosting terhadap website
-                      yang kita buat.</p>
-                  </div>
+        <div class="row justify-content-center">
+          <div class="col-8 col-md-4 my-3" data-aos="fade-right">
+            <a href="#uiuxmodal" data-bs-toggle="modal">
+              <div class="card mycard">
+                <img src="img/myuiuxcard.png" class="card-img-top" alt="UI or UX course" onmouseover="this.src='img/myuiuxcard.gif'" onmouseout="this.src='img/myuiuxcard.png'" loading="lazy" />
+                <div class="card-body">
+                  <h5 class="card-title">UI / UX Design</h5>
+                  <p class="card-text">Desain Interface dan Pengalaman User</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- End of Frontend card modal -->
-        <div class="col-8 col-md-4 my-3" data-aos="fade-left">
-          <a href="#backendmodal" data-bs-toggle="modal">
-            <div class="card mycard">
-              <img src="img/mybackendcard.png" class="card-img-top" alt="UI or UX course"
-                onmouseover="this.src='img/mybackendcard.gif'" onmouseout="this.src='img/mybackendcard.png'"
-                loading="lazy" />
-              <div class="card-body">
-                <h5 class="card-title">Backend</h5>
-                <p class="card-text">Belajar Membuat Server dan API</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- Backend card Modal -->
-        <div class="modal fade" id="backendmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginModalLabel">Backend</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-5">
-                <div class="card">
-                  <img src="img/mybackendcard.gif" height="550" class="card-img-top" alt="UI or UX course"
-                    loading="lazy" />
-                  <div class="card-body">
-                    <h5 class="card-title">Backend</h5>
-                    <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Membuat Server hingga membuat
-                      API menggunakan hapijs.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End of Backend card modal -->
-      </div>
-    </section>
-    <!-- End of Card here -->
-
-    <!-- start of testimonial -->
-    <section class="container pt-4" id="testimonial">
-      <div class="row pt-5" data-aos="flip-up">
-        <div class="col-12 text-center">
-          <h1>Testimoni</h1>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-10 col-md-5 text-center py-2" data-aos="zoom-in-up">
-          <a href="#jelvinModal" data-bs-toggle="modal">
-            <img src="img/jelvin.jpg" alt="Jelvin Krisna Putra" width="120" height="120" class="rounded-circle mycard"
-              loading="lazy" />
-          </a>
-          <figure class="text-center mt-3">
-            <a href="#jelvinModal" data-bs-toggle="modal" style="color: black;">
-              <blockquote class="blockquote mycard">
-                <p>Pembelajaran sangat membantu saya karena dilakukan dengan cara berbasis studi kasus.</p>
-              </blockquote>
             </a>
+          </div>
+          <!-- UI UX card Modal -->
+          <div class="modal fade" id="uiuxmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">UI UX Design</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-3">
+                  <div class="card modalCard d-md-flex flex-md-row">
+                    <img src="img/myuiuxcard.gif" class="card-img-top" alt="UI or UX course" loading="lazy" />
+                    <div class="card-body flex-column d-flex justify-content-center align-items-center">
+                      <h5 class="card-title">UI / UX Design</h5>
+                      <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Desain Interface, Desain Mockup, hingga kepada Pengalaman User.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of UI UX card modal -->
+          <div class="col-8 col-md-4 my-3" data-aos="fade-up">
+            <a href="#frontendmodal" data-bs-toggle="modal">
+              <div class="card mycard">
+                <img src="img/myfrontendcard.png" class="card-img-top" alt="UI or UX course" onmouseover="this.src='img/myfrontendcard.gif'" onmouseout="this.src='img/myfrontendcard.png'" loading="lazy" />
+                <div class="card-body">
+                  <h5 class="card-title">Frontend</h5>
+                  <p class="card-text">Implementasi Desain Interface</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <!-- Frontend card Modal -->
+          <div class="modal fade" id="frontendmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">Frontend</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-3">
+                  <div class="card modalCard d-md-flex flex-md-row">
+                    <img src="img/myfrontendcard.gif" class="card-img-top" alt="UI or UX course" loading="lazy" />
+                    <div class="card-body flex-column d-flex justify-content-center align-items-center">
+                      <h5 class="card-title">Frontend</h5>
+                      <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Implementasi Desain Interface ke dalam kode HTML yang dibantu dengan banyak library css lainnya hingga Hosting terhadap website yang kita buat.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Frontend card modal -->
+          <div class="col-8 col-md-4 my-3" data-aos="fade-left">
+            <a href="#backendmodal" data-bs-toggle="modal">
+              <div class="card mycard">
+                <img src="img/mybackendcard.png" class="card-img-top" alt="UI or UX course" onmouseover="this.src='img/mybackendcard.gif'" onmouseout="this.src='img/mybackendcard.png'" loading="lazy" />
+                <div class="card-body">
+                  <h5 class="card-title">Backend</h5>
+                  <p class="card-text">Membuat Server dan API</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <!-- Backend card Modal -->
+          <div class="modal fade" id="backendmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">Backend</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-3">
+                  <div class="card modalCard d-md-flex flex-md-row">
+                    <img src="img/mybackendcard.gif" class="card-img-top" alt="UI or UX course" loading="lazy" />
+                    <div class="card-body flex-column d-flex justify-content-center align-items-center">
+                      <h5 class="card-title">Backend</h5>
+                      <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Membuat Server hingga membuat API menggunakan hapijs.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Backend card modal -->
+        </div>
+      </section>
+      <!-- End of Card here -->
+
+      <!-- start of testimonial -->
+      <section class="container pt-4" id="testimonial">
+        <div class="row pt-5" data-aos="flip-up">
+          <div class="col-12 text-center">
+            <h1>Testimoni</h1>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-10 col-md-5 text-center py-2" data-aos="zoom-in-up">
             <a href="#jelvinModal" data-bs-toggle="modal">
-              <figcaption class="blockquote-footer mycard"><cite title="Jelvin Krisna Putra">Jelvin Krisna Putra</cite>
-              </figcaption>
+              <img src="img/jelvin.jpg" alt="Jelvin Krisna Putra" width="120" height="120" class="rounded-circle mycard" loading="lazy" />
             </a>
-          </figure>
-        </div>
-        <!-- Jelvin card Modal -->
-        <div class="modal fade" id="jelvinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginModalLabel">Jelvin Krisna Putra</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-5">
-                <div class="card">
-                  <img src="img/jelvin.jpg" height="550" class="card-img-top" alt="UI or UX course" loading="lazy" />
-                  <div class="card-body">
-                    <h5 class="card-title">Backend</h5>
-                    <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Membuat Server hingga membuat
-                      API menggunakan hapijs.</p>
+            <figure class="text-center mt-3">
+              <a href="#jelvinModal" data-bs-toggle="modal" style="color: black">
+                <blockquote class="blockquote mycard">
+                  <p>Pembelajaran sangat membantu saya karena dilakukan dengan cara berbasis studi kasus.</p>
+                </blockquote>
+              </a>
+              <a href="#jelvinModal" data-bs-toggle="modal">
+                <figcaption class="blockquote-footer mycard"><cite title="Jelvin Krisna Putra">Jelvin Krisna Putra</cite></figcaption>
+              </a>
+            </figure>
+          </div>
+          <!-- Jelvin card Modal -->
+          <div class="modal fade" id="jelvinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">Jelvin Krisna Putra</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-2">
+                  <div class="card modal-portfolio-card">
+                    <img src="img/jelvin.jpg" height="550" class="card-img-top" alt="UI or UX course" loading="lazy" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- End of Jelvin card modal -->
-        <div class="col-10 col-md-5 text-center py-2" data-aos="zoom-in-up">
-          <a href="#neilsenModal" data-bs-toggle="modal">
-            <img src="img/neilsen.jpg" alt="Neilsen Nicholas Koma" width="120" height="120"
-              class="rounded-circle mycard" loading="lazy" />
-          </a>
-          <figure class="text-center mt-3">
-            <a href="#neilsenModal" data-bs-toggle="modal" style="color: black;">
-              <blockquote class="blockquote mycard">
-                <p>Pembelajaran sangat menarik dan sangat intuitif</p>
-              </blockquote>
-            </a>
+          <!-- End of Jelvin card modal -->
+          <div class="col-10 col-md-5 text-center py-2" data-aos="zoom-in-up">
             <a href="#neilsenModal" data-bs-toggle="modal">
-              <figcaption class="blockquote-footer mycard"><cite title="Neilsen Nicholas Komah">Neilsen Nicholas
-                  Komah</cite>
-              </figcaption>
+              <img src="img/neilsen.jpg" alt="Neilsen Nicholas Koma" width="120" height="120" class="rounded-circle mycard" loading="lazy" />
             </a>
-          </figure>
-        </div>
-        <!-- Neilsen card Modal -->
-        <div class="modal fade" id="neilsenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="loginModalLabel">Neilsen Nicholas Komah</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-5">
-                <div class="card">
-                  <img src="img/neilsen.jpg" height="550" class="card-img-top" alt="UI or UX course" loading="lazy" />
-                  <div class="card-body">
-                    <h5 class="card-title">Backend</h5>
-                    <p class="card-text">Disini Anda Akan Belajar Banyak Hal Mulai dari Membuat Server hingga membuat
-                      API menggunakan hapijs.</p>
+            <figure class="text-center mt-3">
+              <a href="#neilsenModal" data-bs-toggle="modal" style="color: black">
+                <blockquote class="blockquote mycard">
+                  <p>Pembelajaran sangat menarik dan sangat intuitif</p>
+                </blockquote>
+              </a>
+              <a href="#neilsenModal" data-bs-toggle="modal">
+                <figcaption class="blockquote-footer mycard"><cite title="Neilsen Nicholas Komah">Neilsen Nicholas Komah</cite></figcaption>
+              </a>
+            </figure>
+          </div>
+          <!-- Neilsen card Modal -->
+          <div class="modal fade" id="neilsenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">Neilsen Nicholas Komah</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body my-2 py-4 justify-content-center d-flex flex-grow-1 p-md-2">
+                  <div class="card modal-portfolio-card">
+                    <img src="img/neilsen.jpg" height="550" class="card-img-top" alt="UI or UX course" loading="lazy" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- End of Neilsen card modal -->
         </div>
-        <!-- End of Neilsen card modal -->
+      </section>
+    </main>
+    <!-- End of card here -->
+
+    <!-- contact start here -->
+    <section id="contact" class="container pt-4">
+      <div class="row mb-3 pt-5" data-aos="flip-up">
+        <div class="col-12 text-center">
+          <h1>Contact US</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 d-flex justify-content-center">
+          <form class="w-75" name="submit-to-google-sheet">
+            <div class="mb-3" data-aos="zoom-out-up">
+              <div id="contactUsSuccess" class="alert alert-success d-none" role="alert">Message Send Success!!!</div>
+              <div id="contactUsFail" class="alert alert-danger d-none" role="alert">Message Send Failed!!!</div>
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input name="email" id="contactUsEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="" required />
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3" data-aos="zoom-out-up">
+              <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+              <textarea name="message" id="contactUsMessage" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+            <div class="row">
+              <div class="col d-flex align-items-center">
+                <button id="contactUsButtonSubmit" type="submit" value="Submit" class="btn btn-primary me-3" data-aos="zoom-out-up">Submit</button>
+                <div id="contactUsSpinner" class="spinner-grow text-primary d-none" role="status"></div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
-  </main>
-  <!-- End of card here -->
+    <!-- end of contact here -->
 
-  <!-- contact start here -->
-  <section id="contact" class="container pt-4">
-    <div class="row mb-3 pt-5" data-aos="flip-up">
-      <div class="col-12 text-center">
-        <h1>Contact US</h1>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 d-flex justify-content-center">
-        <form class="w-75" name="submit-to-google-sheet">
-          <div class="mb-3" data-aos="zoom-out-up">
-            <div id="contactUsSuccess" class="alert alert-success d-none" role="alert">
-              Message Send Success!!!
-            </div>
-            <div id="contactUsFail" class="alert alert-danger d-none" role="alert">
-              Message Send Failed!!!
-            </div>
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input name="email" id="contactUsEmail" type="email" class="form-control" id="exampleInputEmail1"
-              aria-describedby="emailHelp" value="" required />
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-          </div>
-          <div class="mb-3" data-aos="zoom-out-up">
-            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-            <textarea name="message" id="contactUsMessage" class="form-control" id="exampleFormControlTextarea1"
-              rows="3" required></textarea>
-          </div>
-          <div class="row">
-            <div class="col d-flex align-items-center">
-              <button id="contactUsButtonSubmit" type="submit" value="Submit" class="btn btn-primary me-3"
-                data-aos="zoom-out-up">Submit</button>
-              <div id="contactUsSpinner" class="spinner-grow text-primary d-none" role="status"></div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-  <!-- end of contact here -->
-
-  <!-- footer start here -->
-  <section id="footer" class="container" data-aos="fade">
-    <footer class="pt-5">
-      <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 pb-2 border-top">
-        <p class="fs-6">©2022 JelvinxNeilsen. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-0 ms-md-3">
-            <a class="link-dark" href="#github">
-              <img src="img/github-svgrepo-com.svg" alt="github link" loading="lazy" />
-            </a>
-          </li>
-          <li class="ms-1 ms-md-3">
-            <a class="link-dark" href="#ig">
-              <img src="img/instagram-svgrepo-com.svg" alt="Instagram Link" loading="lazy" />
-            </a>
-          </li>
-          <li class="ms-1 ms-md-3">
-            <a class="link-dark" href="#">
-              <img src="img/twitter-svgrepo-com.svg" alt="Twitter Link" loading="lazy" />
-            </a>
-          </li>
-          <li class="ms-1 ms-md-3">
-            <a class="link-dark" href="#">
-              <img src="img/linkedin-svgrepo-com.svg" alt="Linkedin Link" loading="lazy" />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  </section>
-  <!-- end of footer -->
-  <!-- fab icon for go up -->
-  <a class="fab d-none" data-aos="fade" href="#home">
-    <img src="img/up.svg" alt="Up Arrow" />
-  </a>
-  <!-- ENDfab icon for go up -->
-</body>
-
+    <!-- footer start here -->
+    <section id="footer" class="container" data-aos="fade">
+      <footer class="pt-5">
+        <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 pb-2 border-top">
+          <p class="fs-6">©2022 JelvinxNeilsen. All rights reserved.</p>
+          <ul class="list-unstyled d-flex">
+            <li class="ms-0 ms-md-3">
+              <a class="link-dark" href="#github">
+                <img src="img/github-svgrepo-com.svg" alt="github link" loading="lazy" />
+              </a>
+            </li>
+            <li class="ms-1 ms-md-3">
+              <a class="link-dark" href="#ig">
+                <img src="img/instagram-svgrepo-com.svg" alt="Instagram Link" loading="lazy" />
+              </a>
+            </li>
+            <li class="ms-1 ms-md-3">
+              <a class="link-dark" href="#">
+                <img src="img/twitter-svgrepo-com.svg" alt="Twitter Link" loading="lazy" />
+              </a>
+            </li>
+            <li class="ms-1 ms-md-3">
+              <a class="link-dark" href="#">
+                <img src="img/linkedin-svgrepo-com.svg" alt="Linkedin Link" loading="lazy" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </section>
+    <!-- end of footer -->
+    <!-- fab icon for go up -->
+    <a class="fab d-none" data-aos="fade" href="#home">
+      <img src="img/up.svg" alt="Up Arrow" />
+    </a>
+    <!-- ENDfab icon for go up -->
+  </body>
 </html>

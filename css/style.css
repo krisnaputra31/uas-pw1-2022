@@ -48,6 +48,54 @@ a {
   }
 }
 
+@media (min-width: 768px) {
+  .modalCard img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalCard {
+    width: 80vw;
+  }
+  .modalCard img {
+    height: 65vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .modalCard {
+    width: 80vw;
+  }
+  .modalCard img {
+    height: 50vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-portfolio-card img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-portfolio-card {
+    width: 80vw;
+  }
+  .modal-portfolio-card img {
+    height: 65vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-portfolio-card {
+    width: 80vw;
+  }
+  .modal-portfolio-card img {
+    height: 50vh;
+  }
+}
+
 .bi::before {
   display: inline-block;
   content: "";
