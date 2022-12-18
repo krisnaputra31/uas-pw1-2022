@@ -174,12 +174,23 @@ function doDaftar() {
 }
 
 // log out button
-document.querySelector("#logoutbutton").addEventListener("click", () => {
+document.querySelector("#logoutbuttonYes").addEventListener("click", () => {
   document.querySelector("#signinbutton").classList.remove("d-none");
   document.querySelector("#logoutbutton").classList.add("d-none");
   localStorage.setItem(REMEMBERME, "false");
   checkLoggedInForAutoEmail();
+  hideModal("logoutModal");
 });
+
+document.querySelector("#logoutbuttonNo").addEventListener("click", () => {
+  hideModal("logoutModal");
+});
+
+function hideModal(modalName) {
+  const myModalEl = document.getElementById(modalName);
+  const modal = bootstrap.Modal.getInstance(myModalEl);
+  modal.hide();
+}
 
 // chekc if remember me is on or off function
 function autoLoggedIn() {

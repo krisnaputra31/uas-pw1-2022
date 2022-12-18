@@ -43,12 +43,28 @@
             </li>
             <li class="nav-item">
               <button id="signinbutton" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</button>
-              <button id="logoutbutton" type="button" class="btn btn-danger d-none">Log Out</button>
+              <button id="logoutbutton" data-bs-toggle="modal" data-bs-target="#logoutModal" type="button" class="btn btn-danger d-none">Log Out</button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    <!-- loggout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginModalLabel">Are You Sure?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body my-2 py-4 justify-content-evenly d-flex flex-grow-1">
+            <button id="logoutbuttonYes" type="button" class="btn btn-danger">Yes, Sure</button>
+            <button id="logoutbuttonNo" type="button" class="btn btn-success">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of loggout modal -->
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
