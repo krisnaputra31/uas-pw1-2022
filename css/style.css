@@ -46,6 +46,9 @@ a {
   #my-carousel img {
     height: 90vh;
   }
+  #text-quote {
+    font-size: large;
+  }
 }
 
 @media (min-width: 768px) {
@@ -70,29 +73,9 @@ a {
   .modalCard img {
     height: 50vh;
   }
-}
 
-@media (min-width: 768px) {
-  .modal-portfolio-card img {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .modal-portfolio-card {
-    width: 80vw;
-  }
-  .modal-portfolio-card img {
-    height: 65vh;
-  }
-}
-
-@media (max-width: 576px) {
-  .modal-portfolio-card {
-    width: 80vw;
-  }
-  .modal-portfolio-card img {
-    height: 50vh;
+  #text-quote {
+    font-size: 1rem;
   }
 }
 
